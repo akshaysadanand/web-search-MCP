@@ -1,0 +1,12 @@
+[project]
+name = "web-search-mcp"
+version = "0.1.0"
+description = "A web search MCP server with Google search and URL scraping capabilities using Playwright"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp>=1.27.1",
+    "playwright>=1.59.0",
+]
+
+[project.scripts]
+web-search-mcp = "search_mcp.server:main"
