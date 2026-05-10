@@ -1,6 +1,6 @@
 # Web Search MCP
 
-A Model Context Protocol (MCP) server that provides web scraping capabilities using a headless Chromium browser powered by [Playwright](https://playwright.dev/).
+An open-source Model Context Protocol (MCP) server that provides web scraping capabilities using a headless Chromium browser powered by [Playwright](https://playwright.dev/).
 
 ## Features
 
