@@ -24,7 +24,7 @@ An open-source Model Context Protocol (MCP) server that provides web scraping ca
 
 1. **Clone the repository**
     ```bash
-    git clone https://github.com/akshay/akshaysadanand/web-search-MCP.git
+    git clone https://github.com/akshaysadanand/web-search-MCP.git
     cd web-search-MCP
     ```
 
