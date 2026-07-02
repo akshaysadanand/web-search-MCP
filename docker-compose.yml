@@ -3,11 +3,11 @@ services:
     image: searxng/searxng:latest
     container_name: searxng
     ports:
-      - "8080:8080"
+      - "8088:8080"
     volumes:
       - ./searxng/settings.yml:/etc/searxng/settings.yml:ro
     environment:
-      - SEARXNG_BASE_URL=http://localhost:8080/
+      - SEARXNG_BASE_URL=http://localhost:8088/
     restart: unless-stopped
     # Optional: limit resources
     deploy:

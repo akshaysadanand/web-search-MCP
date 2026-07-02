@@ -49,7 +49,7 @@ An open-source Model Context Protocol (MCP) server that provides web scraping ca
     Or manually with Docker:
 
     ```bash
-    docker run -d --name searxng -p 8080:8080 \
+    docker run -d --name searxng -p 8088:8080 \
       -v $(pwd)/searxng/settings.yml:/etc/searxng/settings.yml:ro \
       searxng/searxng
     ```
@@ -103,6 +103,38 @@ Configure the server to connect via stdio:
 | Command | `uv` |
 | Arguments | `--directory /path/to/web-search-MCP run python -m search_mcp.server` |
 
+#### VS Code (Global Setup)
+
+To make the MCP server available across **all** your VS Code projects, create a user-level `mcp.json`:
+
+1. Create the file at this path:
+    ```
+    ~/.config/Code/User/mcp.json
+    ```
+
+2. Add the following configuration (replace `/path/to/web-search-MCP` with the actual path):
+    ```json
+    {
+      "inputs": [],
+      "servers": {
+        "web-search-mcp": {
+          "command": "bash",
+          "args": [
+            "/path/to/web-search-MCP/start.sh"
+          ]
+        }
+      }
+    }
+    ```
+
+3. **Reload VS Code** — Press `Ctrl+Shift+P` → `Developer: Reload Window`
+
+> **Note:** The global config lives in `~/.config/Code/User/mcp.json` (not `~/.vscode/mcp.json`). This makes the server available in every workspace and project.
+
+#### VS Code (Project-Level Setup)
+
+For a single project, create `.vscode/mcp.json` in your workspace root with the same configuration as above.
+
 ## Available Tools
 
 ### `web_scrape`
@@ -147,7 +179,7 @@ Search the web using a self-hosted SearXNG instance. SearXNG is a free internet 
 
 **Prerequisites:** You must have a SearXNG instance running. The easiest way is via Docker:
 ```bash
-docker run -d -p 8080:8080 searxng/searxng
+docker run -d -p 8088:8080 searxng/searxng
 ```
 
 **Input Schema:**
@@ -155,7 +187,7 @@ docker run -d -p 8080:8080 searxng/searxng
 | Parameter | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
 | `query` | string | Yes | — | The search query (e.g., `'latest AI news'`) |
-| `searxng_url` | string | No | `http://localhost:8080` | URL of the SearXNG instance |
+| `searxng_url` | string | No | `http://localhost:8088` | URL of the SearXNG instance |
 | `categories` | string | No | `general` | Search category: `general`, `images`, `videos`, `news`, `map`, `music`, `it`, `science`, `files`, `social_media` |
 | `language` | string | No | `all` | Language code (e.g., `'en'`, `'de'`, `'fr'`) |
 | `pageno` | integer | No | `1` | Page number starting from 1 |

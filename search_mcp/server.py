@@ -124,7 +124,7 @@ class WebScrapeServer:
         if not query:
             raise ValueError("Query is required for searxng_search")
 
-        searxng_url = arguments.get("searxng_url", "http://localhost:8080").rstrip("/")
+        searxng_url = arguments.get("searxng_url", "http://localhost:8088").rstrip("/")
         categories = arguments.get("categories", "general")
         language = arguments.get("language", "all")
         pageno = int(arguments.get("pageno", 1))
@@ -227,7 +227,7 @@ class WebScrapeServer:
                     "Search the web using a self-hosted SearXNG instance. "
                     "SearXNG is a free internet metasearch engine that aggregates results from multiple "
                     "search services without tracking users. You must have a SearXNG instance running. "
-                    "Setup: docker run -d -p 8080:8080 searxng/searxng"
+                    "Setup: docker run -d -p 8088:8080 searxng/searxng"
                 ),
                 inputSchema={
                     "type": "object",
@@ -238,7 +238,7 @@ class WebScrapeServer:
                         },
                         "searxng_url": {
                             "type": "string",
-                            "description": "URL of the SearXNG instance (default: http://localhost:8080)",
+                            "description": "URL of the SearXNG instance (default: http://localhost:8088)",
                         },
                         "categories": {
                             "type": "string",
